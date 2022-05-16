@@ -3,7 +3,7 @@ package com.ms.book.service;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import com.ms.book.assembler.AddressModelAssembler;
-import com.ms.book.controller.AddressController;
+import com.ms.book.controller.AddressRestController;
 import com.ms.book.exception.AddressNotFoundException;
 import com.ms.book.model.AddressModel;
 import com.ms.book.repository.AddressRepository;
@@ -46,7 +46,7 @@ public class AddressService {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
         return CollectionModel.of(addresses,
-                linkTo(methodOn(AddressController.class).all()).withRel("addresses"));
+                linkTo(methodOn(AddressRestController.class).all()).withRel("addresses"));
     }
 
     public EntityModel<AddressModel> update(AddressModel newAddress, UUID uuid) {

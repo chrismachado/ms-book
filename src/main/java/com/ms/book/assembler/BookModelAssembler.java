@@ -2,9 +2,9 @@ package com.ms.book.assembler;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-import com.ms.book.controller.AuthorController;
-import com.ms.book.controller.BookController;
-import com.ms.book.controller.PublisherController;
+import com.ms.book.controller.AuthorRestController;
+import com.ms.book.controller.BookRestController;
+import com.ms.book.controller.PublisherRestController;
 import com.ms.book.model.BookModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
@@ -15,15 +15,15 @@ public class BookModelAssembler implements RepresentationModelAssembler<BookMode
     @Override
     public EntityModel<BookModel> toModel(BookModel bookModel) {
         return EntityModel.of(bookModel,
-                linkTo(methodOn(BookController.class).one(bookModel.getId())).withSelfRel(),
-                linkTo(methodOn(AuthorController.class).one(bookModel.getAuthorModel().getId())).withRel("author"),
-                linkTo(methodOn(PublisherController.class).one(bookModel.getPublisher().getId())).withRel("publisher"),
-                linkTo(methodOn(BookController.class).all()).withRel("books"));
+                linkTo(methodOn(BookRestController.class).one(bookModel.getId())).withSelfRel(),
+                linkTo(methodOn(AuthorRestController.class).one(bookModel.getAuthorModel().getId())).withRel("author"),
+                linkTo(methodOn(PublisherRestController.class).one(bookModel.getPublisher().getId())).withRel("publisher"),
+                linkTo(methodOn(BookRestController.class).all()).withRel("books"));
     }
 
     public EntityModel<BookModel> toModelAll(BookModel bookModel) {
         return EntityModel.of(bookModel,
-                linkTo(methodOn(BookController.class).one(bookModel.getId())).withSelfRel(),
-                linkTo(methodOn(BookController.class).all()).withRel("books"));
+                linkTo(methodOn(BookRestController.class).one(bookModel.getId())).withSelfRel(),
+                linkTo(methodOn(BookRestController.class).all()).withRel("books"));
     }
 }

@@ -3,10 +3,9 @@ package com.ms.book.service;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import com.ms.book.assembler.AuthorModelAssembler;
-import com.ms.book.controller.AuthorController;
+import com.ms.book.controller.AuthorRestController;
 import com.ms.book.exception.AuthorNotFoundException;
 import com.ms.book.model.AuthorModel;
-import com.ms.book.model.BookModel;
 import com.ms.book.repository.AuthorRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -41,7 +40,7 @@ public class AuthorService {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
         return CollectionModel.of(authors,
-                linkTo(methodOn(AuthorController.class).all()).withRel("authors"));
+                linkTo(methodOn(AuthorRestController.class).all()).withRel("authors"));
     }
 
     public EntityModel<AuthorModel> one(UUID uuid) {

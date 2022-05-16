@@ -5,7 +5,6 @@ import com.ms.book.model.AddressModel;
 import com.ms.book.model.PublisherModel;
 import com.ms.book.service.AddressService;
 import com.ms.book.service.PublisherService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -14,11 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @RestController
-public class PublisherController {
+public class PublisherRestController {
 
     @Autowired
     PublisherService service;

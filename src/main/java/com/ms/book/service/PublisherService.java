@@ -3,7 +3,7 @@ package com.ms.book.service;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import com.ms.book.assembler.PublisherModelAssembler;
-import com.ms.book.controller.PublisherController;
+import com.ms.book.controller.PublisherRestController;
 import com.ms.book.exception.PublisherNotFoundException;
 import com.ms.book.model.PublisherModel;
 import com.ms.book.repository.PublisherRepository;
@@ -40,7 +40,7 @@ public class PublisherService {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
         return CollectionModel.of(publishers,
-                linkTo(methodOn(PublisherController.class).all()).withRel("publishers"));
+                linkTo(methodOn(PublisherRestController.class).all()).withRel("publishers"));
     }
 
     public EntityModel<PublisherModel> one(UUID uuid) {

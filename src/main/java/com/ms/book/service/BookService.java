@@ -3,10 +3,9 @@ package com.ms.book.service;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import com.ms.book.assembler.BookModelAssembler;
-import com.ms.book.controller.AuthorController;
-import com.ms.book.controller.BookController;
+import com.ms.book.controller.AuthorRestController;
+import com.ms.book.controller.BookRestController;
 import com.ms.book.exception.BookNotFoundException;
-import com.ms.book.model.AuthorModel;
 import com.ms.book.model.BookModel;
 import com.ms.book.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +47,7 @@ public class BookService {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
         return CollectionModel.of(books,
-                linkTo(methodOn(BookController.class).all()).withRel("books"));
+                linkTo(methodOn(BookRestController.class).all()).withRel("books"));
     }
 
     public EntityModel<BookModel> update(BookModel newBookModel, UUID uuid) {
@@ -82,6 +81,6 @@ public class BookService {
                 .collect(Collectors.toList());
 
         return CollectionModel.of(books,
-                linkTo(methodOn(AuthorController.class).one(uuid)).withRel("author"));
+                linkTo(methodOn(AuthorRestController.class).one(uuid)).withRel("author"));
     }
 }

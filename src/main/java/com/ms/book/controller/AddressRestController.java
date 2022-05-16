@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
-public class AddressController {
+public class AddressRestController {
 
     @Autowired
     AddressService service;

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Data</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td><h4>Author Name</h4></td>
+        <td><h4 th:text="${author.getFullName()}"></h4></td>
+    </tr>
+    <tr>
+        <td><h4>Author Birthday</h4></td>
+        <td><h4 th:text="${author.getBirthday()}"></h4></td>
+    </tr>
+</table>
+</body>
+</html>

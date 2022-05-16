@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
-public class BookController {
+public class BookRestController {
 
     @Autowired
     BookService service;
