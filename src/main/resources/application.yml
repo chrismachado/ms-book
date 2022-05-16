@@ -20,3 +20,12 @@ spring:
     url: jdbc:mysql://localhost:3306/ms_book
     username: root
     password: book
+
+  thymeleaf:
+    cache: false
+    suffix: .html
+    prefix: [classpath:/templates/publisher,
+             classpath:/templates/author,
+             classpath:/templates/book,]
+    check-template: true
+
